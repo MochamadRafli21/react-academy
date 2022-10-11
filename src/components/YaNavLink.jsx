@@ -1,4 +1,4 @@
-const NavLink = (props) => {
+const YaNavLink = (props) => {
     return (
         <a href={props.url}>
         <button className={
@@ -10,4 +10,4 @@ const NavLink = (props) => {
         </a>
     )
 }
-export default NavLink;
+export default YaNavLink;

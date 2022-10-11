@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NavLink from "../components/NavLink";
+import NavLink from "../components/YaNavLink";
 const Dashboard = () => {
     return (
         <div className="flex h-screen">
