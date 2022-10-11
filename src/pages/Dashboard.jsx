@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import Button from "../components/Button";
+import NavLink from "../components/NavLink";
 const Dashboard = () => {
-    const [count, setCount] = useState(0)
     return (
         <div className="flex h-screen">
+                login click tombol dibawah
             <div className="m-auto">
-                <div className="text-6xl text-red-600">{count}</div>
-                <Button disabled={true}  />;
+                <NavLink disabled={false} name="Masuk" url="/Login" />
             </div>
         </div>
     )
