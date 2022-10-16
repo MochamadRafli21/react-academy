@@ -7,7 +7,7 @@ import useForm from '../hooks/useForm';
 
 
 
-function Login() {  
+function Register() {  
   
   const loginForm = () => {
     console.log("Form Values ", values);
@@ -16,7 +16,7 @@ function Login() {
   const [disabled, setDisabled] = useState(true)
 
   const validateForm = (values, errors) => {
-    if(values.email && !errors.email && values.password && !errors.password){
+    if(values.email && !errors.email && values.password && !errors.password  && values.fullname && !errors.fullname){
       setDisabled(false)
     } else {
       setDisabled(true)
@@ -37,6 +37,13 @@ function Login() {
           onChange={handleChange} 
         />
         <YaInput 
+          placeholder='Mochamad Hasan' 
+          required={true} type='text' 
+          name='fullname'
+          errors={errors.fullname}
+          onChange={handleChange} 
+        />
+        <YaInput 
           placeholder='*******' 
           type='password' 
           required={true}
@@ -45,11 +52,8 @@ function Login() {
           onChange={handleChange}
         />
         <div className='flex space-x-4 justify-end'>
-          <YaNavLink name="Register" url="/register"/>
+          <YaNavLink name="Sudah Memiliki akun ??" url="/login"/>
           <YaButton name="Masuk" type="submit" disabled={disabled}/>
-        </div>
-        <div className='mt-4'>
-          <YaLink name="Lupa password ? click disini" url="/forget"/>
         </div>
       </form>
 
@@ -57,4 +61,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Register

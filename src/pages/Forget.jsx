@@ -2,12 +2,11 @@ import React, { useState }  from 'react'
 import YaInput from "../components/YaInput";
 import YaButton from '../components/YaButton';
 import YaLink from '../components/YaTextLink';
-import YaNavLink from '../components/YaNavLink';
 import useForm from '../hooks/useForm';
 
 
 
-function Login() {  
+function Forget() {  
   
   const loginForm = () => {
     console.log("Form Values ", values);
@@ -16,7 +15,7 @@ function Login() {
   const [disabled, setDisabled] = useState(true)
 
   const validateForm = (values, errors) => {
-    if(values.email && !errors.email && values.password && !errors.password){
+    if(values.email && !errors.email){
       setDisabled(false)
     } else {
       setDisabled(true)
@@ -36,20 +35,11 @@ function Login() {
           errors={errors.email}
           onChange={handleChange} 
         />
-        <YaInput 
-          placeholder='*******' 
-          type='password' 
-          required={true}
-          errors={errors.password}
-          name='password' 
-          onChange={handleChange}
-        />
         <div className='flex space-x-4 justify-end'>
-          <YaNavLink name="Register" url="/register"/>
-          <YaButton name="Masuk" type="submit" disabled={disabled}/>
+          <YaButton name="Submit" type="submit" disabled={disabled}/>
         </div>
         <div className='mt-4'>
-          <YaLink name="Lupa password ? click disini" url="/forget"/>
+          <YaLink name="Sudah ingat ? click disini" url="/login"/>
         </div>
       </form>
 
@@ -57,4 +47,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Forget
