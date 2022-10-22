@@ -4,13 +4,26 @@ import YaButton from '../components/YaButton';
 import YaLink from '../components/YaTextLink';
 import YaNavLink from '../components/YaNavLink';
 import useForm from '../hooks/useForm';
-
+import { createBrowserHistory } from 'history';
+import axios from 'axios';
 
 
 function Login() {  
   
-  const loginForm = () => {
-    console.log("Form Values ", values);
+  const loginForm = async(e, values) => {
+    e.preventDefault()
+    try {
+      const result = await axios.post('http://localhost:3000/auth/login', {
+          email: values.email,
+          fullname: values.fullname,
+          password: values.password,
+      });
+      localStorage.setItem("access_token", result.data.access_token);
+      } catch (error) {
+      if (error.response) {
+          alert(error.response.data.msg);
+      }
+    }
   }
 
   const [disabled, setDisabled] = useState(true)

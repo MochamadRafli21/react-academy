@@ -91,7 +91,7 @@ const useForm = (callback, validateForm) => {
         if(event) event.preventDefault();
 
         if(Object.keys(errors).length === 0 && Object.keys(values).length !==0 ){
-            callback();
+            callback(event, values);
 
         }else{
             alert("There is an Error!");

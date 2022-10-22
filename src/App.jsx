@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard'
 import Register from './pages/Register'
 import Forget from './pages/Forget'
 
+import { history } from './helpers/history';
 
 
 function App() {

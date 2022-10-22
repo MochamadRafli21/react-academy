@@ -1,16 +1,29 @@
 import React, { useState }  from 'react'
 import YaInput from "../components/YaInput";
 import YaButton from '../components/YaButton';
-import YaLink from '../components/YaTextLink';
 import YaNavLink from '../components/YaNavLink';
 import useForm from '../hooks/useForm';
+import axios from 'axios';
 
 
 
 function Register() {  
+
   
-  const loginForm = () => {
-    console.log("Form Values ", values);
+  const registerForm =async (e, values) => {
+    e.preventDefault()
+    try {
+      const result = await axios.post('http://localhost:3000/users', {
+          email: values.email,
+          fullname: values.fullname,
+          password: values.password,
+      });
+      console.log(result)
+      } catch (error) {
+      if (error.response) {
+          alert(error.response.data.msg);
+      }
+    }
   }
 
   const [disabled, setDisabled] = useState(true)
@@ -23,7 +36,7 @@ function Register() {
     }
   }
   
-  const {handleChange, values, errors, handleSubmit } = useForm(loginForm, validateForm);
+  const {handleChange, values, errors, handleSubmit } = useForm(registerForm, validateForm);
 
   
   return (
