@@ -1,12 +1,23 @@
-import React, { useState }  from 'react'
+import React, { useState , useEffect}  from 'react'
 import YaInput from "../components/YaInput";
 import YaButton from '../components/YaButton';
 import YaLink from '../components/YaTextLink';
 import useForm from '../hooks/useForm';
+import { useNavigate } from "react-router-dom";
+
 
 
 
 function Forget() {  
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const token = localStorage.getItem('access_token')
+    console.log(token)
+    if(token){
+      navigate('/dashboard')
+    }
+  });
   
   const loginForm = () => {
     console.log("Form Values ", values);

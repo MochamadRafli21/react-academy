@@ -1,14 +1,22 @@
-import React, { useState }  from 'react'
+import React, { useState, useEffect }  from 'react'
 import YaInput from "../components/YaInput";
 import YaButton from '../components/YaButton';
 import YaLink from '../components/YaTextLink';
 import YaNavLink from '../components/YaNavLink';
 import useForm from '../hooks/useForm';
-import { createBrowserHistory } from 'history';
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 
-function Login() {  
+function Login() { 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('access_token')
+    if(token){
+      navigate('/dashboard')
+    }
+  });
   
   const loginForm = async(e, values) => {
     e.preventDefault()
@@ -18,7 +26,8 @@ function Login() {
           fullname: values.fullname,
           password: values.password,
       });
-      localStorage.setItem("access_token", result.data.access_token);
+      localStorage.setItem("access_token", "Bearer "+result.data.access_token);
+      navigate('/dashboard')
       } catch (error) {
       if (error.response) {
           alert(error.response.data.msg);

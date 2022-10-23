@@ -1,13 +1,20 @@
-import React, { useState }  from 'react'
+import React, { useState, useEffect }  from 'react'
 import YaInput from "../components/YaInput";
 import YaButton from '../components/YaButton';
 import YaNavLink from '../components/YaNavLink';
 import useForm from '../hooks/useForm';
 import axios from 'axios';
-
-
+import { useNavigate } from "react-router-dom";
 
 function Register() {  
+  const navigate = useNavigate()
+  useEffect(() => {
+    const token = localStorage.getItem('access_token')
+    console.log(token)
+    if(token){
+      navigate('/dashboard')
+    }
+  });
 
   
   const registerForm =async (e, values) => {
