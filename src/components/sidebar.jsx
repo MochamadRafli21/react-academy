@@ -24,7 +24,7 @@ const Sidebar = (props) => {
                     <svg
                     onClick={() => setShowSidebar(!showSidebar)}
                     className="hidden md:block fixed  z-30 flex items-center cursor-pointer left-10 top-6"
-                    fill="#2563EB"
+                    fill="#00000"
                     viewBox="0 0 100 80"
                     width="40"
                     height="40"
